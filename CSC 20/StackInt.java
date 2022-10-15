@@ -18,7 +18,7 @@ public class StackInt{
 	// Methods
 	public void push(int item){
 		// TODO: Add the item to the stack based on how stacks are supposed to work
-	    if(size() != 256) {
+	    if(size() <= 256) {
 	    top++;
 	    a[top] = item;
 	    }
@@ -26,7 +26,7 @@ public class StackInt{
 	
 	public int pop(){
 		// TODO: Remove and return the item at the top of the stack. If stack is empty, return -1
-		if(!isEmpty()) {
+		if(size() != n-1) {
 		return a[top--];
 		}
 		return -1;		// This can be removed but is here to prevent the Java error while testing!
@@ -58,11 +58,13 @@ public class StackInt{
 	public String toString(){
 		// TODO: Return the String with the format of [1,2,3,4] as an example. Have stack items seperated by commas, enclosed inside brackets, and no comma at the end!
 		String brack = "[";
-	       for(int i = 0; i< top; i++){
-	    	  brack = brack + String.valueOf(a[i]) +",";
-	       }
-	       	  brack = brack + String.valueOf(a[top])+"]";
-	           
+		for(int i = 0; i < size(); i++) {
+			brack = brack +  a[i];
+			if(i != size()-1)
+			brack = brack + ",";
+		}
+		    brack = brack + "]";
+	       
 	       return brack;
 	}
 }
